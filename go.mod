@@ -1,4 +1,4 @@
-module github.com/textileio/common
+module github.com/textileio/cli
 
 go 1.17
 
