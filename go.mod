@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.8.1
-	github.com/textileio/go-log/v2 v2.1.3-gke-1
+	github.com/textileio/go-log/v2 v2.1.3-gke-2
 )
 
 require (
