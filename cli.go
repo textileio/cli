@@ -3,7 +3,6 @@ package cli
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"os"
 	"os/signal"
 	"strings"
@@ -13,6 +12,10 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 	logger "github.com/textileio/go-log/v2"
+)
+
+var (
+	log = logger.Logger("cli")
 )
 
 // Flag describes a configuration flag.
@@ -160,7 +163,6 @@ func HandleInterrupt(cleanup func()) {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt, syscall.SIGTERM, syscall.SIGQUIT)
 	<-quit
-	fmt.Println("Gracefully stopping... (press Ctrl+C again to force)")
+	log.Info("Gracefully stopping... (press Ctrl+C again to force)")
 	cleanup()
-	os.Exit(1)
 }
