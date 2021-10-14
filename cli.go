@@ -68,9 +68,10 @@ func ConfigureCLI(v *viper.Viper, envPrefix string, flags []Flag, flagSet *pflag
 // on viper flags. if logLevels is nil, all sub-logs will be configured.
 func ConfigureLogging(v *viper.Viper, logLevels []string) error {
 	var format logger.LogFormat
-	logJSON := v.GetBool("log-json")
-	if logJSON {
+	if v.GetBool("log-json") {
 		format = logger.JSONOutput
+	} else if v.GetBool("log-plaintext") {
+		format = logger.PlaintextOutput
 	} else {
 		format = logger.ColorizedOutput
 	}
